@@ -1,0 +1,9 @@
+package com.qluxury.qluxury_ecommerce_backend.request;
+
+import lombok.Data;
+
+@Data
+public class LoginRequest {
+    private String email;
+    private String otp;
+}
