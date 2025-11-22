@@ -43,8 +43,6 @@ public class OrderController {
         PaymentOrder paymentOrder = paymentService.createOrder(user, orders);
         paymentOrder.setPaymentMethod(paymentMethod);
 
-        // === OPTION A: PAYCARD = giống COD ===
-        // → Tự động SUCCESS không cần thanh toán online
         for (Order o : orders) {
             o.setPaymentStatus(PaymentStatus.COMPLETED);
             orderRepository.save(o);

@@ -1,5 +1,6 @@
 package com.qluxury.qluxury_ecommerce_backend.modal;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.qluxury.qluxury_ecommerce_backend.domain.HomeCategorySection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,5 +22,6 @@ public class HomeCategory {
     private String name;
     private String image;
     private String categoryId;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private HomeCategorySection section;
 }

@@ -5,6 +5,7 @@ import com.qluxury.qluxury_ecommerce_backend.repository.HomeCategoryRepository;
 import com.qluxury.qluxury_ecommerce_backend.service.HomeCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,11 +20,9 @@ public class HomeCategoryServiceImpl implements HomeCategoryService {
     }
 
     @Override
+    @Transactional
     public List<HomeCategory> createCategories(List<HomeCategory> homeCategories) {
-        if(homeCategoryRepository.findAll().isEmpty()){
-            return homeCategoryRepository.saveAll(homeCategories);
-        }
-        return homeCategoryRepository.findAll();
+        return homeCategoryRepository.saveAll(homeCategories);
     }
 
     @Override

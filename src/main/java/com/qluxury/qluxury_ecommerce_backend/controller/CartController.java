@@ -32,7 +32,7 @@ public class CartController {
 
         return new ResponseEntity<Cart>(cart, HttpStatus.OK);
     }
-    @PutMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<CartItem> addItemToCart(@RequestHeader("Authorization")String jwt,
                                                   @RequestBody AddItemRequest req) throws ProductException, Exception {
         User user = userService.findUserByJwtToken(jwt);

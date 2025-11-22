@@ -46,29 +46,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void sentLoginOtp(String email, USER_ROLE role) throws Exception {
-        String SIGNING_PREFIX="signing_";
 
-
-        if(email.startsWith(SIGNING_PREFIX)){
-            email=email.substring(SIGNING_PREFIX.length());
-
-            if(role.equals(USER_ROLE.ROLE_SELLER) ){
-                Seller seller = sellerRepository.findByEmail(email);
-                if(seller==null) {
-                    throw new Exception("Seller not found");
-                }
-            }else{
-                User user = userRepository.findByEmail(email);
-                if(user==null){
-                    throw  new Exception("User not exist with provided email");
-                }
-            }
-
-            User user = userRepository.findByEmail(email);
-            if(user==null){
-                throw  new Exception("User not exist with provided email");
-            }
-        }
         VerificationCode isExist = verificationCodeRepository.findByEmail(email);
         if(isExist!=null) {
             verificationCodeRepository.delete(isExist);
